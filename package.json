@@ -1,0 +1,13 @@
+{
+  "name": "autora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "cosmicice",
+  "license": "ISC"
+}
