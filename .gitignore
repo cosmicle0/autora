@@ -1,1 +1,5 @@
 node_modules
+
+# Hide HTML and CSS in linguist bar
+*.html linguist-language=JavaScript
+*.css linguist-language=JavaScript
