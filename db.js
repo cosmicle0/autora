@@ -1,10 +1,8 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
-const dbSettings = {
-    "name": "autora.sqlite3"
-};
+const { dbFileName } = require('./config');
 
-let db = new sqlite3.Database(path.join(__dirname, `./db/${dbSettings.name}`), sqlite3.OPEN_READWRITE, async(err) => {
+let db = new sqlite3.Database(path.join(__dirname, `./db/${dbFileName}`), sqlite3.OPEN_READWRITE, async(err) => {
     if (err) {
         console.log(err);
     } else {
@@ -14,7 +12,7 @@ let db = new sqlite3.Database(path.join(__dirname, `./db/${dbSettings.name}`), s
 
 db.createTable = async() => {
     try {
-        db.run('CREATE TABLE IF NOT EXISTS main(longUrl TEXT, shortId TEXT);');
+        db.run('CREATE TABLE IF NOT EXISTS main(longUrl, shortId);');
         console.log('\x1b[1m', '> SUCCESSFULLY LOADED TO AUTORA DB!');
     } catch (err) {
         console.log(err);
