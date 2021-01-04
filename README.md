@@ -16,6 +16,32 @@ Autora is a URL Shortener made using Express.js and SQLITE. It's very easy to se
 
 Congrats! You've setup your own instance of Autora!
 
+### Usage:
+
+- Without Custom Slug
+Input:
+`http://[host]/api/new?url=https://example.com`
+
+Output:
+```json
+{
+  "status": 200,
+  "longUrl": "https://example.com",
+  "shortUrl": "http://[host]/[generated-slug]"}
+```
+
+- With Custom Slug
+Input:
+`http://[host]/api/new?url=https://example.com&slug=example`
+
+Output:
+```json
+{
+  "status": 200,
+  "longUrl": "https://example.com",
+  "shortUrl": "http://[host]/example"}
+```
+
 Feel free to contribute, and create an Issue if any.
 
 (c) [cosmicice](https://github.com/cosmicice) 2020. This project is licensed under the [Creative Commons Zero v1.0 Universal License](https://github.com/CosmicIceDev/autora/blob/master/LICENSE).
