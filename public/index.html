@@ -13,7 +13,7 @@
             <hr>
         </center>
     </div>
-    <div class="container">
+    <!--<div class="container">
         <div class="row">
             <form class="col s12">
               <div class="row">
@@ -24,7 +24,42 @@
               </div>
             </form>
           </div>
+    </div>-->
+    <div class="container">
+      <center>
+        <h5>UI coming Soon&trade;</h5>
+      </center>
     </div>
+    <div class="container">
+      <h4>Usage:</h4>
+      <p>Without Custom Slug Input <b>http://<%= base %>/api/new?url=https://example.com</b></p>
+      <p>Output:</p>
+      <pre style="border: solid 0.2em #000000; background-color: #eee; border-radius: 0.3em; padding: 0.5em;">{
+  "status": 200,
+  "longUrl": "https://example.com",
+  "shortUrl": "http://<%= base %>/[generated-slug]"
+}</pre>
+      <p>With Custom Slug Input <b>http://<%= base %>/api/new?url=https://example.com&slug=example</b></p>
+      <p>Output:</p>
+      <pre style="border: solid 0.2em #000000; background-color: #eee; border-radius: 0.3em; padding: 0.5em;">{
+  "status": 200,
+  "longUrl": "https://example.com",
+  "shortUrl": "http://<%= base %>/example"
+}</pre>
+    </div>
+
+    <footer class="page-footer white"> 
+      <div class="container "> 
+      </div> 
+      <div class="footer-copyright" style="background-color: #26a69a;"> 
+        <div class="container "> 
+          © Autora.
+          <a class="white-text text-lighten-4 right" href="https://github.com/CosmicIceDev/autora" target="_blank"> 
+            Source Code
+          </a> 
+        </div> 
+      </div> 
+    </footer> 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
