@@ -27,7 +27,8 @@ Output:
 {
   "status": 200,
   "longUrl": "https://example.com",
-  "shortUrl": "http://[host]/[generated-slug]"}
+  "shortUrl": "http://[host]/[generated-slug]"
+}
 ```
 
 - With Custom Slug
@@ -39,7 +40,8 @@ Output:
 {
   "status": 200,
   "longUrl": "https://example.com",
-  "shortUrl": "http://[host]/example"}
+  "shortUrl": "http://[host]/example"
+}
 ```
 
 Feel free to contribute, and create an Issue if any.
