@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const db = require(path.join(__dirname, './db.js'));
 
 // Importing config variables
 const { port, baseUrl } = require('./config');
@@ -20,5 +21,11 @@ app.use((req, res) => {
 
 // Starting the Server
 app.listen(port, () => {
-    console.log(`> Server Running on localhost:${port}`);
+    console.log('\x1b[1m', `> SERVER RUNNING ON http://127.0.0.1:${port}`);
+    try {
+        db;
+        db.createTable();
+    } catch (err) {
+        console.log(err);
+    }
 });

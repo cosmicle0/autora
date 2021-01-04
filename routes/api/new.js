@@ -1,6 +1,10 @@
 const express = require('express');
-const router = express.Router();
+const shortid = require('shortid');
 const validUrl = require('valid-url');
+const { baseUrl } = require('../../config');
+const db = require('../../db');
+
+const router = express.Router();
 
 router.get('/', async (req, res) => {
     const lurl = req.query.url;
@@ -9,46 +13,52 @@ router.get('/', async (req, res) => {
     if (!lurl) {
         res.status(400).json({
             status: 400,
-            error: 'Please include a URL to shorten!'
+            message: 'Please provid a valid URL to shorten!'
         });
     } else {
-        if (validUrl.isWebUri(lurl)) {
-            if (slug) {
-                createUrl(lurl, slug);
+        if (validUrl.isUri(lurl)) {
+            if (Object.values(await db.checkIfUrlExists(lurl))[0] === 1) {
                 res.status(200).json({
                     status: 200,
-                    longurl: `${lurl}`,
-                    customSlug: slug,
-                    shorturl: 'soon™'
+                    longUrl: lurl,
+                    shortUrl: `http://${baseUrl}/${Object.values(await db.selectByLongUrl(lurl))[0]}`
                 });
             } else {
-                createUrl(lurl);
-                res.status(200).json({
-                    status: 200,
-                    longurl: `${lurl}`,
-                    shorturl: 'soon™'
-                });
+                if (slug) {
+                    if (Object.values(await db.checkIfSlugExists(slug))[0] === 1) {
+                        res.status(400).json({
+                            status: 400,
+                            message: 'This Slug has already been taken!'
+                        });
+                    } else {
+                        try {
+                            await db.insert(lurl, slug);
+                            res.status(200).json({
+                                status: 200,
+                                longUrl: lurl,
+                                shortUrl: `http://${baseUrl}/${slug}`
+                            })
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    };
+                } else {
+                    const generatedSlug = shortid.generate();
+                    await db.insert(lurl, generatedSlug);
+                    res.status(200).json({
+                        status: 200,
+                        longUrl: lurl,
+                        shortUrl: `http://${baseUrl}/${generatedSlug}`
+                    });
+                };
             };
         } else {
             res.status(400).json({
                 status: 400,
-                error: 'Inavlid Long URL!'
+                message: 'Please provid a valid URL to shorten!'
             });
-        };  
-    };
-});
-
-/**
- * 
- * @param {string} longUrl 
- * @param {string} slug 
- */
-const createUrl = async(longUrl, slug) => {
-    if (slug) {
-
-    } else {
-
+        }
     }
-};
+});
 
 module.exports = router;
