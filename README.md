@@ -7,12 +7,12 @@ Autora is a URL Shortener made using Express.js and SQLITE. It's very easy to se
 
 ### How to Setup:
 
-1. `git clone https://github.com/CosmicIceDev/autora`
-2. `cd autora`
-3. `npm install`
+1. `git clone https://github.com/CosmicIceDev/autora`.
+2. `cd autora`.
+3. `npm install`.
 4. Modify config.js with your own values.
-5. Create a directory called `db`, and create a file with the same name as you've entered in config.js in the `db` directory. Keep it as `autora.sqlite3` if you don't know what you're doing.
-6. Use pm2 (`npm i -g pm2`, `pm2 start index.js`) or run the server using `node index.js`
+5. Create a directory called `db`, and create a file inside the directory with whatever name you used in `config.js` for `dbFileName`, or if you left it as it was, name it `autora.sqlite3`.
+6. Use pm2 (`npm i -g pm2`, `pm2 start index.js`) or run the server using `node index.js`.
 
 Congrats! You've setup your own instance of Autora!
 
