@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const path = require('path');
 const db = require(path.join(__dirname, './db.js'));
+const path = require('path');
 
 // Importing config variables
 const { port, baseUrl } = require('./config');
